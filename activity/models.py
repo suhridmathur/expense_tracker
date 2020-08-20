@@ -17,6 +17,7 @@ class Transaction(models.Model):
     class TransactionTypeChoices(models.TextChoices):
         EXPENSE = "expense", "Expense"
         INCOME = "income", "Income"
+        INVESTEMENT = "investment", "Investment"
         ACCOUNT_TRANSFER = "account_transfer", "Account Transfer"
 
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -33,3 +34,16 @@ class Transaction(models.Model):
         self.wallet.balance -= self.amount
         self.wallet.save()
         super(Transaction, self).save(*args, **kwargs)
+
+
+class InvestmentType(models.Model):
+    name = models.CharField(max_length=500)
+
+
+class Investment(models.Model):
+    investment_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    return_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    invested_type = models.ForeignKey(InvestmentType)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateField(null=True, blank=True)
+    description = models.TextField()
