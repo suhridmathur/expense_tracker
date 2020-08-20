@@ -1,9 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %}Homepage{% endblock title  %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/common.css">
+{% endblock extra_css %}
 {% block content %}
-    <div class="stats-dashboard">
-        
+    <div class="monthly-stats">
+        <div class="card">
+            <img src="/static/images/Circle-icons-money.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <h4>Income</h4>
+                <p>85,000</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/images/Circle-icons-money.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <h4>Expenses</h4>
+                <p>30,000</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/images/Circle-icons-money.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <h4>Investment</h4>
+                <p>55,000</p>
+            </div>
+        </div>
     </div>
 {% endblock content %}
