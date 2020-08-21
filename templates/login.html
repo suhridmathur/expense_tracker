@@ -19,12 +19,15 @@
 <body>
     <div class="container">
         <div class="login-div">
-            <form action="" class="login-form">
+            <form action="/login/" class="login-form" method="POST">
                 <label for="email">Email:</label>
-                <input autocomplete="off" type="email" name="" id="" class="form-control" >
+                <input autocomplete="off" type="email" name="email" class="form-control" >
                 <label for="password">Password:</label>
-                <input type="password" name="" id="" class="form-control" autocomplete="off">
-                <button class="btn btn-outline-success">Login!</button>
+                <input type="password" name="password" class="form-control" autocomplete="off">
+                <button class="btn btn-outline-success">Login!</button><br>
+                {% if message %}
+                <span style="color:#a10000">{{ message }}</span>
+                {% endif %}
             </form>
         </div>
     </div>
