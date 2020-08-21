@@ -52,6 +52,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "context_processors.cloud_front_host",
             ],
         },
     },
@@ -113,3 +114,11 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("CJFjTf67oKhXhHL4IjpWKR6n2kSdyofsnptmnadb")
+AWS_STORAGE_BUCKET_NAME="tracker-expense"
+
+CLOUD_FRONT_HOST = "http://tracker-expense.s3.ap-south-1.amazonaws.com/"
