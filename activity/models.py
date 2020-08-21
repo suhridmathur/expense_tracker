@@ -31,8 +31,8 @@ class Transaction(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        self.wallet.balance -= self.amount
-        self.wallet.save()
+        self.account.balance -= self.amount
+        self.account.save()
         super(Transaction, self).save(*args, **kwargs)
 
 
