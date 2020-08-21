@@ -1,0 +1,24 @@
+.login-div {
+    margin: auto;
+    width: 60%;
+    margin-top: 100px;
+    background-color: #1d6063;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-control {
+    margin: 5px;
+}
+
+.login-form{
+    text-align: center;
+}
+
+label{
+    color: white;
+}
+
+button{
+    margin-top: 10px;
+}
