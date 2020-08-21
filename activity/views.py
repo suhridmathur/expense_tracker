@@ -8,5 +8,5 @@ class Homepage(TemplateView):
     template_name = "homepage.html"
 
 @method_decorator(login_required, name="dispatch")
-class Wallets(TemplateView):
-    template_name = "wallets.html"
+class Accounts(TemplateView):
+    template_name = "accounts.html"

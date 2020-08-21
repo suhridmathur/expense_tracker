@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from . import utils
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -11,6 +12,7 @@ class Account(models.Model):
     name = models.CharField(max_length=100)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    logo = models.ImageField(upload_to=utils.upload_to_storage, null=True)
 
 
 class Transaction(models.Model):
@@ -31,8 +33,8 @@ class Transaction(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        self.wallet.balance -= self.amount
-        self.wallet.save()
+        self.account.balance -= self.amount
+        self.account.save()
         super(Transaction, self).save(*args, **kwargs)
 
 
@@ -44,6 +46,7 @@ class Investment(models.Model):
     investment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     return_amount = models.DecimalField(max_digits=10, decimal_places=2)
     invested_type = models.ForeignKey(InvestmentType, on_delete=models.PROTECT)
+    account = models.ForeignKey(Account, on_delete=models.PROTECT, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     return_date = models.DateField(null=True, blank=True)
     description = models.TextField()
