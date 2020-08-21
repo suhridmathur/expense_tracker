@@ -1,7 +1,9 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 
 class Login(TemplateView):
@@ -29,3 +31,10 @@ class Login(TemplateView):
             message = f"Bad Credentials!"
             return render(request, self.template_name, {"message": message})
         return HttpResponseRedirect("/login/")
+
+
+@method_decorator(login_required, name="dispatch")
+class Logout(TemplateView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect("/")
