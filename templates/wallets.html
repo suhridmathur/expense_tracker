@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock title  %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/common.css">
+{% endblock extra_css %}
+{% block content %}
+    <div class="heading">
+        <span>Wallets</span>
+    </div>
+    <div class="monthly-stats">
+        <div class="card wallet">
+            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <span class="card-text">PNB</span>
+            </div>
+        </div>
+        <div class="card wallet">
+            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <span class="card-text">Digibank</span>
+            </div>
+        </div>
+        <div class="card wallet">
+            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <span class="card-text">Groww</span>
+            </div>
+        </div>
+        <div class="card wallet">
+            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
+            <div class="container">
+                <span class="card-text">Angel Broking</span>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
