@@ -9,30 +9,15 @@
         <span>Accounts</span>
     </div>
     <div class="monthly-stats">
-        <div class="card accounts">
-            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
-            <div class="container">
-                <span class="card-text">PNB</span>
+        {% for account  in accounts  %}
+            <div class="card accounts">
+                <img src="{{ CLOUD_FRONT_HOST }}{{ account.logo }}" alt="" height="150" width="200px">
+                <div class="container">
+                    <span class="card-text">{{account.name}}</span>
+                    <span class="card-text">&#8377; {{account.balance}}</span>
+                </div>
             </div>
-        </div>
-        <div class="card account">
-            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
-            <div class="container">
-                <span class="card-text">Digibank</span>
-            </div>
-        </div>
-        <div class="card account">
-            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
-            <div class="container">
-                <span class="card-text">Groww</span>
-            </div>
-        </div>
-        <div class="card account">
-            <img src="/static/images/58-512.png" alt="" height="200px" width="200px">
-            <div class="container">
-                <span class="card-text">Angel Broking</span>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <div class="add-div">
@@ -50,8 +35,15 @@
                 </div>
                 
                 <div class="modal-body">
-                    Account Name:<input type="text" name="name" id="">
-                    
+                    <form id="AH_CreateAccountForm">
+                        <label for="name">Account Name</label>
+                        <input type="text" name="name" id="AH_AccountName" class="form-control">
+                        <label for="balance"> Initial Balance</label>
+                        <input type="number" name="name" id="AH_AccountBalance" class="form-control">
+                        <label for="logo">Logo</label>
+                        <input type="file" name="" id="AH_AccountLogo" class="form-control">
+                        <button class="btn btn-primary create-account-button">Create</button>
+                    </form>
                 </div>
             </div>
         </div>
