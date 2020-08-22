@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Homepage{% endblock title  %}
+{% block title %}Accounts{% endblock title  %}
 {% block extra_css %}
     <link rel="stylesheet" href="/static/css/common.css">
 {% endblock extra_css %}
@@ -11,9 +11,9 @@
     <div class="monthly-stats">
         {% for account  in accounts  %}
             <div class="card accounts">
-                <img src="{{ CLOUD_FRONT_HOST }}{{ account.logo }}" alt="" height="150" width="200px">
+                <img src="{{ CLOUD_FRONT_HOST }}{{ account.logo }}" alt="" height="150" width="150px">
                 <div class="container">
-                    <span class="card-text">{{account.name}}</span>
+                    <span class="card-text">{{account.name}}</span> <br>
                     <span class="card-text">&#8377; {{account.balance}}</span>
                 </div>
             </div>

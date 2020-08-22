@@ -56,3 +56,7 @@ class Accounts(TemplateView):
         if not success:
             status_code = 400
         return JsonResponse({"message": message}, status=status_code)
+
+
+class Transactions(TemplateView):
+    template_name = "transactions.html"
