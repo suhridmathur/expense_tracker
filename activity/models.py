@@ -14,6 +14,9 @@ class Account(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     logo = models.ImageField(upload_to=utils.upload_to_storage, null=True)
 
+    def __str__(self):
+        return f"{self.name}, Rs. {self.balance}"
+
 
 class Transaction(models.Model):
     class TransactionTypeChoices(models.TextChoices):
