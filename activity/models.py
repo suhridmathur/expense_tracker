@@ -3,15 +3,23 @@ from django.db import models
 
 from . import utils
 
+
 class Category(models.Model):
+    class TypeChoices(models.TextChoices):
+        EXPENSE = "expense", "Expense"
+        INCOME = "income", "Income"
+        INVESTEMENT = "investment", "Investment"
+        ACCOUNT_TRANSFER = "account_transfer", "Account Transfer"
+
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category_type = models.CharField(choices=TypeChoices.choices)
 
 
 class Account(models.Model):
     name = models.CharField(max_length=100)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="accounts")
     logo = models.ImageField(upload_to=utils.upload_to_storage, null=True)
 
     def __str__(self):
